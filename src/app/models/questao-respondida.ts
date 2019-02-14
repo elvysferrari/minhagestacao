@@ -6,4 +6,5 @@ export class QuestaoRespondida {
     respostas: RespostaModelo[];
     nomePessoa: string;
     emailPessoa: string;
+    relevancia: number;
 }

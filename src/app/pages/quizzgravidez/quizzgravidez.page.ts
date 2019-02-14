@@ -52,22 +52,33 @@ export class QuizzgravidezPage implements OnInit {
    
   verResultado(){
     //calcular o resultado das questoes
-    let primeiraQuestao =  this.checkboxes.filter(x => x.el.id[0] == '1')
-    
+    let pRelevancia: number = 0;
+    let sRelevancia: number = 0;
+    let tRelevancia: number = 0;
+    let qRelevancia: number = 0;
+    let qqRelevancia: number = 0;
+    let seRelevancia: number = 0;
+    let sesRelevancia: number = 0;
+    let oRelevancia: number = 0;
+
+    let primeiraQuestao =  this.checkboxes.filter(x => x.el.id[0] == '1')    
     let newPrimeiraQuestao = new QuestaoRespondida();
     newPrimeiraQuestao.emailPessoa = "elvys@gmail.com";
     newPrimeiraQuestao.nomePessoa ="elvys"
     newPrimeiraQuestao.questaoModelo = this.questoes.find(x => x.id == 1);
     newPrimeiraQuestao.respostas = [];
 
+    
     primeiraQuestao.forEach((chk) => {
       if(chk.checked == true){
         let index = chk.el.id.indexOf("_");      
         let id = chk.el.id.slice(index + 1, chk.el.id.length);        
         let resp = this.respostas.find(x => x.id == Number(id));
+        pRelevancia = pRelevancia + resp.relevancia;
         newPrimeiraQuestao.respostas.push(resp);
       }      
     })  
+    newPrimeiraQuestao.relevancia = (pRelevancia);
     this.questoesRespondidas.push(newPrimeiraQuestao) ;
     /* primeira questao fim*/
   
@@ -83,9 +94,11 @@ export class QuizzgravidezPage implements OnInit {
         let index = chk.el.id.indexOf("_");      
         let id = chk.el.id.slice(index + 1, chk.el.id.length);        
         let resp = this.respostas.find(x => x.id == Number(id));
+        sRelevancia = sRelevancia + resp.relevancia;
         newSegundaQuestao.respostas.push(resp);
       }      
     })  
+    newSegundaQuestao.relevancia = (sRelevancia);
     this.questoesRespondidas.push(newSegundaQuestao) ;
     /* segunda questao fim*/
 
@@ -101,9 +114,11 @@ export class QuizzgravidezPage implements OnInit {
         let index = chk.el.id.indexOf("_");      
         let id = chk.el.id.slice(index + 1, chk.el.id.length);        
         let resp = this.respostas.find(x => x.id == Number(id));
+        tRelevancia = tRelevancia + resp.relevancia;
         newTerceiraQuestao.respostas.push(resp);
       }      
     })  
+    newTerceiraQuestao.relevancia = (tRelevancia);
     this.questoesRespondidas.push(newTerceiraQuestao) ;
 
     let quartaQuestao =  this.checkboxes.filter(x => x.el.id[0] == '4')
@@ -118,9 +133,11 @@ export class QuizzgravidezPage implements OnInit {
         let index = chk.el.id.indexOf("_");      
         let id = chk.el.id.slice(index + 1, chk.el.id.length);        
         let resp = this.respostas.find(x => x.id == Number(id));
+        qRelevancia = qRelevancia + resp.relevancia;
         newQuartaQuestao.respostas.push(resp);
       }      
     })  
+    newQuartaQuestao.relevancia = (tRelevancia);
     this.questoesRespondidas.push(newQuartaQuestao) ;
 
     let quintaQuestao =  this.checkboxes.filter(x => x.el.id[0] == '5')
@@ -135,9 +152,11 @@ export class QuizzgravidezPage implements OnInit {
         let index = chk.el.id.indexOf("_");      
         let id = chk.el.id.slice(index + 1, chk.el.id.length);        
         let resp = this.respostas.find(x => x.id == Number(id));
+        qqRelevancia = qqRelevancia + resp.relevancia;
         newQuintaQuestao.respostas.push(resp);
       }      
     })  
+    newQuintaQuestao.relevancia = (qqRelevancia);
     this.questoesRespondidas.push(newQuintaQuestao) ;
 
     let sextaQuestao =  this.checkboxes.filter(x => x.el.id[0] == '6')
@@ -152,9 +171,11 @@ export class QuizzgravidezPage implements OnInit {
         let index = chk.el.id.indexOf("_");      
         let id = chk.el.id.slice(index + 1, chk.el.id.length);        
         let resp = this.respostas.find(x => x.id == Number(id));
+        seRelevancia = seRelevancia + resp.relevancia;
         newSextaQuestao.respostas.push(resp);
       }      
     })  
+    newSextaQuestao.relevancia = (seRelevancia);
     this.questoesRespondidas.push(newSextaQuestao) ;
 
     let setimaQuestao =  this.checkboxes.filter(x => x.el.id[0] == '7')
@@ -169,9 +190,11 @@ export class QuizzgravidezPage implements OnInit {
         let index = chk.el.id.indexOf("_");      
         let id = chk.el.id.slice(index + 1, chk.el.id.length);        
         let resp = this.respostas.find(x => x.id == Number(id));
+        sesRelevancia = sesRelevancia + resp.relevancia;
         newSetimaQuestao.respostas.push(resp);
       }      
     })  
+    newSetimaQuestao.relevancia = (sesRelevancia);
     this.questoesRespondidas.push(newSetimaQuestao) ;
 
     let oitavaQuestao =  this.checkboxes.filter(x => x.el.id[0] == '8')
@@ -186,12 +209,20 @@ export class QuizzgravidezPage implements OnInit {
         let index = chk.el.id.indexOf("_");      
         let id = chk.el.id.slice(index + 1, chk.el.id.length);        
         let resp = this.respostas.find(x => x.id == Number(id));
+        oRelevancia = oRelevancia + resp.relevancia;
         newOitavaQuestao.respostas.push(resp);
       }      
     })  
+    newOitavaQuestao.relevancia = (oRelevancia);
     this.questoesRespondidas.push(newOitavaQuestao) ;
-   
-    console.log(' this.questoesRespondidas',  this.questoesRespondidas)    
+       
+    let totalRelevancia: number[] = [];
+    this.questoesRespondidas.forEach((o) =>{
+      if(o.questaoModelo.id != 1){
+        totalRelevancia.push(o.relevancia);
+      }
+    })
+    console.log('media',  totalRelevancia)   
 
     this.displayResult = true;
     
