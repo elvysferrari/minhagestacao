@@ -8,34 +8,34 @@ const routes: Routes = [
     component: HomePage,
     children: [
       {
-        path: 'category-list',
+        path: 'inicio',
         children: [
           {
             path: '',
             //loadChildren: '../lista-servicos-tab/lista-servicos-tab.module#ListaServicosTabPageModule'
-            loadChildren: '../category-list/category-list.module#CategoryListPageModule'
+            loadChildren: '../inicio/inicio.module#InicioPageModule'
           }
         ]
       },
       {
-        path: 'configuracoes-tab',
+        path: 'mais',
         children: [
           {
             path: '',
-            loadChildren: '../configuracoes-tab/configuracoes-tab.module#ConfiguracoesTabPageModule'
+            loadChildren: '../mais/mais.module#MaisPageModule'
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/home/category-list',
+        redirectTo: '/home/inicio',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/home/category-list',
+    redirectTo: '/home/inicio',
     pathMatch: 'full'
   }
 ];

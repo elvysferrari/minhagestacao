@@ -9,15 +9,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AngularFireModule } from 'angularfire2';
-import { environment } from '../environments/environment';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { CategoryTemplateService } from './services/category-template.service';
-import { ServiceProviderService } from './services/service-provider.service';
-import { ServiceTemplateService } from './services/service-template.service';
-import { AuthService } from './services/auth.service';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { PersonService } from './services/person.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,19 +16,13 @@ import { PersonService } from './services/person.service';
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
-    AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,],
+    AppRoutingModule    
+    ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    CategoryTemplateService,
-    ServiceProviderService,
-    ServiceTemplateService,
-    AuthService,
-    AngularFireAuth,
-    PersonService
+    
   ],
   bootstrap: [AppComponent]
 })
