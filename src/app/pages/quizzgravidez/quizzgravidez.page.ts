@@ -7,7 +7,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class QuizzgravidezPage implements OnInit {
   @ViewChild('slide') slide;
-  
+  displayResult = false;
   slideOpts = {
     effect: 'flip'
   };
@@ -26,6 +26,11 @@ export class QuizzgravidezPage implements OnInit {
   }
 
   sliderEnd(evt){
-    console.log('end')
+    //fazer pergunta pra colocar o email;
+
+  }
+
+  sendEmail(){
+    
   }
 }

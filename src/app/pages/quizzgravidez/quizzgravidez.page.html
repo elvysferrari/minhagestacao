@@ -38,13 +38,9 @@
             <ion-item>
               <ion-label text-wrap class="labels">Pílula anticoncepcional oral</ion-label>
               <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
-            </ion-item>
+            </ion-item>            
             <ion-item>
-              <ion-label text-wrap class="labels">Pílula anticoncepcional oral</ion-label>
-              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <ion-label text-wrap class="labels">Método de barreira (ex: preservativo);</ion-label>
+              <ion-label text-wrap class="labels">Método de barreira (ex: preservativo)</ion-label>
               <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
             </ion-item>
             <ion-item>
@@ -269,18 +265,18 @@
           </ion-list>
         </div>
         <div class="text-bottom">
-          <ion-button color="tertiary" (click)="nextSlide()" expand="full">Próxima</ion-button>
+          <ion-button color="tertiary" (click)="nextSlide()" expand="full">Resultado</ion-button>
         </div>
       </div>
     </ion-slide>
     <ion-slide>
       <div class="content">
         <div class="title-top">Seus resultados</div>
-        <div style="width: 100%">
+        <div *ngIf="displayResult" style="width: 100%">
 
         </div>
         <div class="text-bottom">
-          <ion-button color="tertiary" (click)="backSlide()" expand="full">Enviar por email</ion-button>
+          <ion-button color="tertiary" (click)="sendEmail()" expand="full">Enviar por email</ion-button>
         </div>
       </div>
     </ion-slide>
