@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button text="Voltar" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>Idade gestacional</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-slides #slide style="height: 90%;" (ionSlideReachEnd)="sliderEnd($event)" pager="true" [options]="slideOpts">
+    <ion-slide>
+      <div class="content">
+        <div class="title-top">Data da última menstruação</div>
+        <div class="text-middle">Por favor, selecione a data da última menstruação que você lembra, se você não lembrar
+          marque a opção (Não sei/ Não lembro).</div>
+        <div style="padding-top: 15px; width: 100%; text-align: center; font-size: 1rem">
+          <ion-radio-group (ionChange)="changeRadio($event)">
+            <ion-item>
+              <ion-label>Não sei/ Não lembro</ion-label>
+              <ion-radio slot="start" value="empty"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Há uma semana</ion-label>
+              <ion-radio slot="start" value="oneWeek"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Há duas semana</ion-label>
+              <ion-radio slot="start" value="twoWeek"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Informar manualmente</ion-label>
+              <ion-radio slot="start" value="manual"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </div>
+        <div *ngIf="radio == 'manual'" class="text-bottom">
+          <ion-item>
+            <ion-label>DUM</ion-label>
+            <ion-datetime [(ngModel)]="dum" display-format="DD/MM/YYYY"></ion-datetime>
+          </ion-item>
+        </div>
+        <div class="text-bottom">
+          <ion-button color="tertiary" (click)="nextSlide()" expand="full">Próximo</ion-button>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="content">
+        <div class="title-top">Resultado</div>
+        <div class="text-middle">Abaixo as informações sobre a sua idade gestacional.</div>
+        <div style="width: 100%">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title style="color: rgb(84, 143, 84)">Parabéns, você está com</ion-card-title>
+            </ion-card-header>
+            <ion-card-content style="color: rgb(168, 87, 87)">
+              3 semanas e 4 dias.
+            </ion-card-content>
+          </ion-card>
+          <ion-card>
+              <ion-card-header>
+                <ion-card-title style="color: rgb(126, 125, 199)">Data provável do parto</ion-card-title>
+              </ion-card-header>
+              <ion-card-content  style="color: rgb(168, 87, 87)">
+                Dia 11 de Outubro de 2019.
+              </ion-card-content>
+            </ion-card>
+        </div>
+
+        <div class="text-bottom">          
+          <ion-button color="tertiary" (click)="backSlide()" expand="full">Voltar</ion-button>          
+        </div>
+      </div>
+    </ion-slide>
+    <!-- <ion-slide>
+        <div class="content">
+            <div class="title-top">Data da última menstruação</div>
+            <div class="text-middle">Por favor, selecione a data da última menstruação que você lembra, se você não lembrar
+              marque a opção (Não sei/ Não lembro).</div>
+            <div style="padding-top: 15px; width: 100%; text-align: center; font-size: 1rem">
+              <ion-radio-group (ionChange)="changeRadio($event)">
+                <ion-item>
+                  <ion-label>Não sei/ Não lembro</ion-label>
+                  <ion-radio slot="start" value="empty"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Há uma semana</ion-label>
+                  <ion-radio slot="start" value="oneWeek"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Há duas semana</ion-label>
+                  <ion-radio slot="start" value="twoWeek"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Informar manualmente</ion-label>
+                  <ion-radio slot="start" value="manual"></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </div>
+            <div *ngIf="radio == 'manual'" class="text-bottom">
+              <ion-item>
+                <ion-label>DUM</ion-label>
+                <ion-datetime [(ngModel)]="dum" display-format="DD/MM/YYYY"></ion-datetime>
+              </ion-item>
+            </div>
+            <div class="text-bottom">              
+              <ion-button color="tertiary" (click)="backSlide()" expand="full">Voltar</ion-button>
+            </div>
+          </div>      
+    </ion-slide> -->
+  </ion-slides>
+</ion-content>

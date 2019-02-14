@@ -1,0 +1,29 @@
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    padding-bottom: 130px;
+}
+.title-top{
+    //padding-bottom: 200px;
+    color: #666;
+    width: 100%;
+}
+.text-middle{
+    //padding-bottom: 50px;
+    padding-top: 15px;
+    color: #666;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+}
+.text-bottom{
+    //padding-bottom: 50px;
+    padding-top: 15px;
+    width: 100%;
+    
+}
+.swiper-slide{
+    display: block;
+}

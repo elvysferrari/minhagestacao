@@ -1,0 +1,288 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button text="Voltar" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>Teste de Gravidez</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-slides #slide style="height: 100%;" (ionSlideReachEnd)="sliderEnd($event)" pager="true" [options]="slideOpts">
+    <ion-slide>
+      <div class="content">
+        <div class="title-top">Teste de Gravidez</div>
+        <div class="text-middle">Responda o questionário abaixo para verifiar se seus sintomas podem ser uma dica
+          precoce.</div>
+        <div style="width: 100%; text-align: center; font-size: 1rem">
+          
+        </div>
+        <div class="text-bottom">
+          <ion-button color="tertiary" (click)="nextSlide()" expand="full">Próxima</ion-button>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="content">        
+        <div style="width: 100%; text-align: center; font-size: 1rem">
+          <ion-list>
+            <ion-list-header>
+              <ion-label color="primary">Que método de contracepção você está usando?</ion-label>
+            </ion-list-header>
+            <ion-item >
+              <ion-label text-wrap class="labels">Implante contraceptivo (Nexaplanon), sistema instrauterino (SIU), ou dispositivo
+                intrauterino
+                (DIU)</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Pílula anticoncepcional oral</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Pílula anticoncepcional oral</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Método de barreira (ex: preservativo);</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Nenhum</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </div>
+        <div class="text-bottom">
+          <ion-button color="tertiary" (click)="nextSlide()" expand="full">Próxima</ion-button>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="content">
+        <div style="width: 100%; text-align: center; font-size: 1rem">
+          <ion-list>
+            <ion-list-header>
+              <ion-label>Quando é sua próxima menstruação?</ion-label>
+            </ion-list-header>
+            <ion-item>
+              <ion-label text-wrap class="labels">Em 2 semanas ou mais</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Em alguns dias</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Estou com alguns dias de atraso</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Estou com mais de uma semana de atraso</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Não sei/não tenho menstruação regular</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </div>
+        <div class="text-bottom">
+          <ion-button color="tertiary" (click)="nextSlide()" expand="full">Próxima</ion-button>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="content">
+        <div style="width: 100%; text-align: center; font-size: 1rem">
+          <ion-list>
+            <ion-list-header>
+              <ion-label>Notou alguma mudança em seus seios?</ion-label>
+            </ion-list-header>
+            <ion-item>
+              <ion-label text-wrap class="labels">Não, tudo parece normal</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Eles estão um pouco sensíveis</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Eles estão muito sensíveis/doloridos</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Meus mamilos parecem um pouco mais escuros que o normal</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </div>
+        <div class="text-bottom">
+          <ion-button color="tertiary" (click)="nextSlide()" expand="full">Próxima</ion-button>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="content">
+        <div style="width: 100%; text-align: center; font-size: 1rem">
+          <ion-list>
+            <ion-list-header>
+              <ion-label>Você se sentiu enjoada recentemente?</ion-label>
+            </ion-list-header>
+            <ion-item>
+              <ion-label text-wrap class="labels">Não</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Às vezes um pouco enjoada</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Sinto enjoo às vezes quando estou com fome</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Tenho ficado enjoada com frequência!</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </div>
+        <div class="text-bottom">
+          <ion-button color="tertiary" (click)="nextSlide()" expand="full">Próxima</ion-button>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="content">
+        <div style="width: 100%; text-align: center; font-size: 1rem">
+          <ion-list>
+            <ion-list-header>
+              <ion-label>Como estão seus níveis de energia?</ion-label>
+            </ion-list-header>
+            <ion-item>
+              <ion-label text-wrap class="labels">Estou me sentindo relativamente normal</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Eu estou me sentindo um pouco sonolenta</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Estou me sentindo bem cansada na maioria das tardes e noites</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Estou exausta o tempo todo. Já está na hora de ir dormir?</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </div>
+        <div class="text-bottom">
+          <ion-button color="tertiary" (click)="nextSlide()" expand="full">Próxima</ion-button>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="content">
+        <div style="width: 100%; text-align: center; font-size: 1rem">
+          <ion-list>
+            <ion-list-header>
+              <ion-label>Você está urinando com mais frequência que o normal?</ion-label>
+            </ion-list-header>
+            <ion-item>
+              <ion-label text-wrap class="labels">Não percebi</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Sim, um pouco mais que o normal</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Minha frequência urinária durante o dia e a noite aumentou</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Minha bexiga está sempre cheia!</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </div>
+        <div class="text-bottom">
+          <ion-button color="tertiary" (click)="nextSlide()" expand="full">Próxima</ion-button>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="content">
+        <div style="width: 100%; text-align: center; font-size: 1rem">
+          <ion-list>
+            <ion-list-header>
+              <ion-label>Como está o seu humor em geral?</ion-label>
+            </ion-list-header>
+            <ion-item>
+              <ion-label text-wrap class="labels">Estou normal</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Estou um pouco mal-humorada, mas nada demais</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Estou bem irritada com tudo e com todos no momento</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Estou em uma montanha-russa emocional!</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </div>
+        <div class="text-bottom">
+          <ion-button color="tertiary" (click)="nextSlide()" expand="full">Próxima</ion-button>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="content">
+        <div style="width: 100%; text-align: center; font-size: 1rem">
+          <ion-list>
+            <ion-list-header>
+              <ion-label>Notou alguma alteração em seu apetite?</ion-label>
+            </ion-list-header>
+            <ion-item>
+              <ion-label text-wrap class="labels">Não, tudo parece normal</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Não suporto coisas de que eu gostava antes (por exemplo, chá, café, sabores
+                fortes)</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">Eu estou comendo tudo que vejo</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap class="labels">O cheiro de alguns alimentos está me deixando bem enjoada</ion-label>
+              <ion-checkbox class="checkboxes" slot="start"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </div>
+        <div class="text-bottom">
+          <ion-button color="tertiary" (click)="nextSlide()" expand="full">Próxima</ion-button>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="content">
+        <div class="title-top">Seus resultados</div>
+        <div style="width: 100%">
+
+        </div>
+        <div class="text-bottom">
+          <ion-button color="tertiary" (click)="backSlide()" expand="full">Enviar por email</ion-button>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
