@@ -12,10 +12,11 @@
     <ion-slide>
       <div class="content">
         <div class="title-top">Teste de Gravidez</div>
-        <div class="text-middle">Bem vinda ao teste de gravidez, responda o questionário abaixo para verifiar se seus sintomas podem ser uma dica
-          precoce.</div>
-        <div style="width: 100%; text-align: center; font-size: 1rem">
-          
+        <div style="padding-top: 15px" class="text-middle">Bem vinda ao teste de gravidez, responda o questionário abaixo para verificar se seus
+          sintomas são de gravidez</div>
+        <div style="padding-top: 15px; color: #d48b8b" class="text-middle">(Atenção, este teste não deverá substituir qualquer diagnóstico médico, em caso de dúvidas procure um profissional.)</div>        
+        <div style="width: 100%; padding-left: 30%; font-size: 1rem">            
+          <ion-img style="height:128px; width:128px; align-items: center" src="assets/images/baby1.png"></ion-img>          
         </div>
         <div class="text-bottom">
           <ion-button color="tertiary" (click)="nextSlide()" expand="full">Próxima</ion-button>
@@ -23,16 +24,20 @@
       </div>
     </ion-slide>
     <ion-slide *ngFor="let questao of questoes">
-      <div class="content">        
+      <div class="content">
         <div style="width: 100%; text-align: center; font-size: 1rem">
           <ion-list>
             <ion-list-header>
               <ion-label color="primary">{{ questao?.titulo }}</ion-label>
             </ion-list-header>
-            <ion-item *ngFor="let resposta of questao.respostas">
+            <ion-radio-group>
+              <ion-item *ngFor="let resposta of questao.respostas">
                 <ion-label text-wrap class="labels">{{ resposta?.texto }}</ion-label>
-                <ion-checkbox id="{{ questao.id }}_{{ resposta.id }}" #checkboxes class="checkboxes" slot="start"></ion-checkbox>
-              </ion-item>           
+                <!-- <ion-checkbox id="{{ questao.id }}_{{ resposta.id }}" #checkboxes class="checkboxes" slot="start"></ion-checkbox> -->
+                <ion-radio slot="start" id="{{ questao.id }}_{{ resposta.id }}" #radios value=" {{ resposta?.id }}">
+                </ion-radio>
+              </ion-item>
+            </ion-radio-group>
           </ion-list>
         </div>
         <div class="text-bottom">
@@ -41,18 +46,31 @@
       </div>
     </ion-slide>
     <ion-slide>
-        <div class="content">
-          <div class="title-top">Seus resultados</div>
-          <div *ngIf="displayResult" style="width: 100%">
-            <h2>Resultado</h2>
-          </div>
-          <div *ngIf="!displayResult" class="text-bottom">
-            <ion-button color="primary" (click)="verResultado()" expand="full">Ver resultado</ion-button>
-          </div>
-          <div *ngIf="displayResult" class="text-bottom">
-              <ion-button color="primary" (click)="refazerTeste()" expand="full">Refazer o teste</ion-button>
-            </div>
+      <div class="content">
+        <div class="title-top">Seus resultados</div>
+        <div *ngIf="displayResult" style="width: 100%">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title style="color: rgb(126, 125, 199)">Chance de estar grávida é de: </ion-card-title>
+            </ion-card-header>
+            <ion-card-content >
+              <div>
+                  <ion-label [ngStyle]="{'color': resultado < 50 ? '#2f914d' : '#e55050' } " text-wrap class="labels">{{ resultado.toFixed(2) }}%</ion-label>     
+              </div>
+              <div>
+                  <ion-label *ngIf="resultado > 50" text-wrap class="labels">O teste indica que você tem uma chance grande de estar grávida. Você pode fazer um teste para ter certeza </ion-label>
+                  <ion-label *ngIf="resultado < 50" text-wrap class="labels">Fique tranquila, o teste indica que você tem pouca chance de estar grávida. Mas você pode fazer um teste para ter certeza.</ion-label>  
+              </div>                                               
+            </ion-card-content>
+          </ion-card>
         </div>
-      </ion-slide>    
+        <div *ngIf="!displayResult" class="text-bottom">
+          <ion-button color="primary" (click)="verResultado()" expand="full">Ver resultado</ion-button>
+        </div>
+        <div *ngIf="displayResult" class="text-bottom">
+          <ion-button color="primary" (click)="refazerTeste()" expand="full">Refazer o teste</ion-button>
+        </div>
+      </div>
+    </ion-slide>
   </ion-slides>
 </ion-content>

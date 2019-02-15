@@ -14,7 +14,7 @@ export class QuizzgravidezService {
       titulo: "Que método de contracepção você está usando?",
       respostas:[{
         id: 1.1,
-        relevancia: 15,
+        relevancia: 20,
         texto: `Implante contraceptivo (Nexaplanon), sistema instrauterino (SIU), ou dispositivo
         intrauterino
         (DIU)`,

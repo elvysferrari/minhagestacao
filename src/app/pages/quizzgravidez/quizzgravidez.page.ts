@@ -11,7 +11,10 @@ import { RespostaModelo } from 'src/app/models/respostaModelo';
 })
 export class QuizzgravidezPage implements OnInit {
   @ViewChild('slide') slide;
-  @ViewChildren('checkboxes') checkboxes;
+  /* @ViewChildren('checkboxes') checkboxes; */
+  @ViewChildren('radios') radios;
+
+
 
   displayResult = false;
   slideOpts = {
@@ -21,6 +24,8 @@ export class QuizzgravidezPage implements OnInit {
   questoes: QuestaoModelo[] = [];
   respostas: RespostaModelo[] = [];
   questoesRespondidas: QuestaoRespondida[] = []; 
+  
+  resultado: number;
 
   constructor(private questoesService: QuizzgravidezService) { }
 
@@ -51,7 +56,7 @@ export class QuizzgravidezPage implements OnInit {
   }
    
   verResultado(){
-    //calcular o resultado das questoes
+    
     let pRelevancia: number = 0;
     let sRelevancia: number = 0;
     let tRelevancia: number = 0;
@@ -61,7 +66,9 @@ export class QuizzgravidezPage implements OnInit {
     let sesRelevancia: number = 0;
     let oRelevancia: number = 0;
 
-    let primeiraQuestao =  this.checkboxes.filter(x => x.el.id[0] == '1')    
+    let porcentagem: number = 0;
+
+    let primeiraQuestao =  this.radios.filter(x => x.el.id[0] == '1')    
     let newPrimeiraQuestao = new QuestaoRespondida();
     newPrimeiraQuestao.emailPessoa = "elvys@gmail.com";
     newPrimeiraQuestao.nomePessoa ="elvys"
@@ -80,9 +87,9 @@ export class QuizzgravidezPage implements OnInit {
     })  
     newPrimeiraQuestao.relevancia = (pRelevancia);
     this.questoesRespondidas.push(newPrimeiraQuestao) ;
-    /* primeira questao fim*/
+
   
-    let segundaQuestao =  this.checkboxes.filter(x => x.el.id[0] == '2')
+    let segundaQuestao =  this.radios.filter(x => x.el.id[0] == '2')
     let newSegundaQuestao = new QuestaoRespondida();
     newSegundaQuestao.emailPessoa = "elvys@gmail.com";
     newSegundaQuestao.nomePessoa ="elvys"
@@ -100,9 +107,14 @@ export class QuizzgravidezPage implements OnInit {
     })  
     newSegundaQuestao.relevancia = (sRelevancia);
     this.questoesRespondidas.push(newSegundaQuestao) ;
-    /* segunda questao fim*/
+    
+    if(sRelevancia == 10){
+      porcentagem = porcentagem + 30;
+    }else if(sRelevancia > 10){
+      porcentagem = porcentagem + 40;
+    }
 
-    let terceiraQuestao =  this.checkboxes.filter(x => x.el.id[0] == '3')
+    let terceiraQuestao =  this.radios.filter(x => x.el.id[0] == '3')
     let newTerceiraQuestao = new QuestaoRespondida();
     newTerceiraQuestao.emailPessoa = "elvys@gmail.com";
     newTerceiraQuestao.nomePessoa ="elvys"
@@ -121,7 +133,13 @@ export class QuizzgravidezPage implements OnInit {
     newTerceiraQuestao.relevancia = (tRelevancia);
     this.questoesRespondidas.push(newTerceiraQuestao) ;
 
-    let quartaQuestao =  this.checkboxes.filter(x => x.el.id[0] == '4')
+    if(tRelevancia == 10){
+      porcentagem = porcentagem + 20;
+    }else if(tRelevancia > 10){
+      porcentagem = porcentagem + 40;
+    }
+
+    let quartaQuestao =  this.radios.filter(x => x.el.id[0] == '4')
     let newQuartaQuestao = new QuestaoRespondida();
     newQuartaQuestao.emailPessoa = "elvys@gmail.com";
     newQuartaQuestao.nomePessoa ="elvys"
@@ -137,10 +155,16 @@ export class QuizzgravidezPage implements OnInit {
         newQuartaQuestao.respostas.push(resp);
       }      
     })  
-    newQuartaQuestao.relevancia = (tRelevancia);
+    newQuartaQuestao.relevancia = (qRelevancia);
     this.questoesRespondidas.push(newQuartaQuestao) ;
 
-    let quintaQuestao =  this.checkboxes.filter(x => x.el.id[0] == '5')
+    if(qRelevancia == 5){
+      porcentagem = porcentagem + 10;
+    }else if(qRelevancia >= 10){
+      porcentagem = porcentagem + 30;
+    }
+
+    let quintaQuestao =  this.radios.filter(x => x.el.id[0] == '5')
     let newQuintaQuestao = new QuestaoRespondida();
     newQuintaQuestao.emailPessoa = "elvys@gmail.com";
     newQuintaQuestao.nomePessoa ="elvys"
@@ -159,7 +183,13 @@ export class QuizzgravidezPage implements OnInit {
     newQuintaQuestao.relevancia = (qqRelevancia);
     this.questoesRespondidas.push(newQuintaQuestao) ;
 
-    let sextaQuestao =  this.checkboxes.filter(x => x.el.id[0] == '6')
+    if(qqRelevancia == 5){
+      porcentagem = porcentagem + 10;
+    }else if(qqRelevancia >= 10){
+      porcentagem = porcentagem + 30;
+    }
+
+    let sextaQuestao =  this.radios.filter(x => x.el.id[0] == '6')
     let newSextaQuestao = new QuestaoRespondida();
     newSextaQuestao.emailPessoa = "elvys@gmail.com";
     newSextaQuestao.nomePessoa ="elvys"
@@ -178,7 +208,15 @@ export class QuizzgravidezPage implements OnInit {
     newSextaQuestao.relevancia = (seRelevancia);
     this.questoesRespondidas.push(newSextaQuestao) ;
 
-    let setimaQuestao =  this.checkboxes.filter(x => x.el.id[0] == '7')
+    if(seRelevancia == 5){
+      porcentagem = porcentagem + 10;
+    }else if(seRelevancia == 10){
+      porcentagem = porcentagem + 20;
+    }else if(seRelevancia > 10){
+      porcentagem = porcentagem + 30;
+    }
+
+    let setimaQuestao =  this.radios.filter(x => x.el.id[0] == '7')
     let newSetimaQuestao = new QuestaoRespondida();
     newSetimaQuestao.emailPessoa = "elvys@gmail.com";
     newSetimaQuestao.nomePessoa ="elvys"
@@ -197,7 +235,14 @@ export class QuizzgravidezPage implements OnInit {
     newSetimaQuestao.relevancia = (sesRelevancia);
     this.questoesRespondidas.push(newSetimaQuestao) ;
 
-    let oitavaQuestao =  this.checkboxes.filter(x => x.el.id[0] == '8')
+    if(sesRelevancia == 5){
+      porcentagem = porcentagem + 10;
+    }else if(sesRelevancia == 10){
+      porcentagem = porcentagem + 20;
+    }else if(sesRelevancia > 10){
+      porcentagem = porcentagem + 30;
+    }
+    let oitavaQuestao =  this.radios.filter(x => x.el.id[0] == '8')
     let newOitavaQuestao = new QuestaoRespondida();
     newOitavaQuestao.emailPessoa = "elvys@gmail.com";
     newOitavaQuestao.nomePessoa ="elvys"
@@ -215,21 +260,59 @@ export class QuizzgravidezPage implements OnInit {
     })  
     newOitavaQuestao.relevancia = (oRelevancia);
     this.questoesRespondidas.push(newOitavaQuestao) ;
-       
+    
+    if(oRelevancia == 5){
+      porcentagem = porcentagem + 10;
+    }else if(oRelevancia == 10){
+      porcentagem = porcentagem + 20;
+    }else if(oRelevancia > 10){
+      porcentagem = porcentagem + 30;
+    }
+
+    if(pRelevancia >= 20){
+      if(porcentagem > 60){
+        porcentagem = Math.floor((Math.random() * 35) + 42);
+      }else{
+        porcentagem = 10;
+      }
+      
+    }else if(pRelevancia >= 10){
+      if(porcentagem > 60){
+        porcentagem = Math.floor((Math.random() * 60) + 51);
+      }else{
+        porcentagem = 20;
+      }
+      
+    }
+
     let totalRelevancia: number[] = [];
     this.questoesRespondidas.forEach((o) =>{
       if(o.questaoModelo.id != 1){
         totalRelevancia.push(o.relevancia);
       }
     })
-    console.log('media',  totalRelevancia)   
-
+ 
+    if(porcentagem > 100){
+      this.resultado = porcentagem / 2;
+    }else if(porcentagem > 200){
+      this.resultado = porcentagem / 2.5;
+    }else{
+      this.resultado = porcentagem;
+    }
+    
     this.displayResult = true;
     
   }
 
   refazerTeste(){
+    this.resultado = 0;
+    this.questoesRespondidas = [];
+    this.radios.forEach((radio) => {
+      radio.checked = false;
+    })
     this.slide.slideTo(0);
     this.displayResult = false;
   }
+
+
 }
