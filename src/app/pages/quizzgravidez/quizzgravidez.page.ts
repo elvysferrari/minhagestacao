@@ -3,6 +3,7 @@ import { QuestaoModelo } from './../../models/questaoModelo';
 import { QuizzgravidezService } from './../../services/quizzgravidez.service';
 import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { RespostaModelo } from 'src/app/models/respostaModelo';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quizzgravidez',
@@ -27,7 +28,8 @@ export class QuizzgravidezPage implements OnInit {
   
   resultado: number;
 
-  constructor(private questoesService: QuizzgravidezService) { }
+  constructor(private questoesService: QuizzgravidezService,
+              private router: Router) { }
 
   ngOnInit() {
     this.questoes = this.questoesService.getQuizzGravidez();  
@@ -294,10 +296,19 @@ export class QuizzgravidezPage implements OnInit {
  
     if(porcentagem > 100){
       this.resultado = porcentagem / 2;
+      if( this.resultado > 100){
+        this.resultado = Math.floor((Math.random() * 88) + 95);
+      }
     }else if(porcentagem > 200){
       this.resultado = porcentagem / 2.5;
-    }else{
+      if( this.resultado > 100){
+        this.resultado =  Math.floor((Math.random() * 88) + 95);
+      }
+    }else{      
       this.resultado = porcentagem;
+      if( this.resultado > 100){
+        this.resultado =  Math.floor((Math.random() * 88) + 95);
+      }
     }
     
     this.displayResult = true;
@@ -314,5 +325,7 @@ export class QuizzgravidezPage implements OnInit {
     this.displayResult = false;
   }
 
-
+  idadeGestacional(){
+    this.router.navigateByUrl('/slider')
+  }
 }
