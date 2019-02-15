@@ -273,14 +273,14 @@ export class QuizzgravidezPage implements OnInit {
       if(porcentagem > 60){
         porcentagem = Math.floor((Math.random() * 35) + 42);
       }else{
-        porcentagem = 10;
+        porcentagem = Math.floor((Math.random() * 7) + 12);        
       }
       
     }else if(pRelevancia >= 10){
       if(porcentagem > 60){
         porcentagem = Math.floor((Math.random() * 60) + 51);
       }else{
-        porcentagem = 20;
+        porcentagem = Math.floor((Math.random() * 14) + 21);   
       }
       
     }
