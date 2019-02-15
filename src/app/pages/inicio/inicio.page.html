@@ -5,6 +5,26 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-button color="medium" (click)="openSliderQuizzPage()" expand="full">Estou grávida?</ion-button>
-  <ion-button  color="medium" (click)="openSliderPage()" expand="full">Idade gestacional</ion-button>  
+  <ion-card (click)="openSliderQuizzPage()">
+    <ion-img src="assets/images/pregnant.jpg"></ion-img>
+    <ion-card-content>
+      <div class="div-title">
+        Estou grávida?
+      </div>
+      <div class="div-content">
+        Este questionário avalia alguns sintomas de gravidez.
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card (click)="openSliderPage()">
+    <ion-img src="assets/images/pregnant-time.jpg"></ion-img>
+    <ion-card-content>
+      <div class="div-title">
+        Idade Gestacional
+      </div>
+      <div class="div-content">
+        Calcule o tempo da sua gestação.
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

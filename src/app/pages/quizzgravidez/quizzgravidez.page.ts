@@ -298,7 +298,7 @@ export class QuizzgravidezPage implements OnInit {
       }
     })
  
-    if(porcentagem > 100){
+    if(porcentagem >= 100 && porcentagem <= 199){
       this.resultado = porcentagem / 2;
       if( this.resultado > 100){
         this.resultado = Math.floor((Math.random() * 88) + 95);

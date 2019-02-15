@@ -53,11 +53,11 @@
             </ion-card-header>
             <ion-card-content >
               <div>
-                  <ion-label [ngStyle]="{'color': resultado < 50 ? '#2f914d' : '#e55050' } " text-wrap class="labels">{{ resultado.toFixed(2) }}%</ion-label>     
+                  <ion-label [ngStyle]="{'color': resultado < 50 ? '#2f914d' : '#e55050', 'font-size': '1.25rem' } " text-wrap class="labels">{{ resultado.toFixed(2) }}%</ion-label>     
               </div>
               <div  *ngIf="resultado > 50">
                   <ion-label text-wrap class="labels">O teste indica que você tem uma chance grande de estar grávida. Você pode fazer um teste para ter certeza </ion-label>                  
-                  <ion-button color="primary" (click)="idadeGestacional()" expand="full">Calcular idade Gestacional</ion-button>
+                  <ion-button color="tertiary" (click)="idadeGestacional()" expand="full">Calcular idade Gestacional</ion-button>
               </div>       
               <div *ngIf="resultado < 50">
                   <ion-label  text-wrap class="labels">Fique tranquila, o teste indica que você tem pouca chance de estar grávida. Mas você pode fazer um teste para ter certeza.</ion-label>  

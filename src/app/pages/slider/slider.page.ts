@@ -1,4 +1,7 @@
+import { GestacaoService } from './../../services/gestacao.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-slider',
@@ -7,15 +10,17 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class SliderPage implements OnInit {
   @ViewChild('slide') slide;
-
+  @ViewChild('datetime') date;
   slideOpts = {
     effect: 'flip'
   };
 
   radio: string = "";
   dum: Date;
-
-  constructor() { }
+  idadeGestacional: string = "";
+  dppFromDum: Date;
+  disableButton = true;
+  constructor(private router: Router, private gestacaoService: GestacaoService, private alertController: AlertController) { }
 
   ngOnInit() {
   }
@@ -26,14 +31,69 @@ export class SliderPage implements OnInit {
 
   changeRadio(evt){
     this.radio = evt.detail.value
-
+    this.disableButton = false;
   }
 
-  nextSlide(){
-    this.slide.slideNext();
+  async nextSlide(){
+    let next = false;
+    
+    let formatedDum = ""
+    if(this.radio == "manual"){
+      if(this.date.value !== ""){
+        let dum = new Date(this.date.value);
+        formatedDum = dum.getDate() + "/" + (dum.getMonth() + 1) + "/" + dum.getFullYear() ;  
+        next = true;
+      }                    
+    }else if(this.radio == "empty"){
+      let date = new Date();
+      let date2 = date.setTime(date.getTime() - (7 * 24 * 60 * 60 * 1000));
+      let dum = new Date(date2);
+      formatedDum = dum.getDate() + "/" + (dum.getMonth() + 1) + "/" + dum.getFullYear() ;
+      next = true;
+    }else if(this.radio == "oneWeek"){
+      let date = new Date();
+      let date2 = date.setTime(date.getTime() - (14 * 24 * 60 * 60 * 1000));
+      let dum = new Date(date2);
+      
+      formatedDum = dum.getDate() + "/" + (dum.getMonth() + 1) + "/" + dum.getFullYear() ;
+      next = true;
+    }else if(this.radio == "twoWeek"){
+      let date = new Date();
+      let date2 = date.setTime(date.getTime() - (30 * 24 * 60 * 60 * 1000));
+      let dum = new Date(date2);
+      
+      formatedDum = dum.getDate() + "/" + (dum.getMonth() + 1) + "/" + dum.getFullYear() ;
+      next = true;
+    }
+
+    if(formatedDum != ""){
+      let idade = this.gestacaoService.getIdadeGestacional(formatedDum, "", "");
+      this.idadeGestacional = idade;
+  
+      let dpp = this.gestacaoService.getDppFromDate(formatedDum, "");
+      this.dppFromDum = dpp;
+  
+      if(next){
+        this.slide.slideNext(); 
+      }
+    }else{
+      const alert = await this.alertController.create({
+        header: 'Data inválida.',
+        subHeader: '',
+        message: 'Por favor, informe uma data válida.',
+        buttons: ['OK']
+      });
+  
+      await alert.present();
+    }
+    
   }
   
   backSlide(){
     this.slide.slidePrev();
+  }
+
+  goHome(){
+    this.router.navigateByUrl('/home')
   }
 }
