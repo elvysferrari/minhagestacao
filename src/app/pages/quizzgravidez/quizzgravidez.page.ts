@@ -27,7 +27,7 @@ export class QuizzgravidezPage implements OnInit {
   questoesRespondidas: QuestaoRespondida[] = []; 
   
   resultado: number;
-
+  disableButton = true;
   constructor(private questoesService: QuizzgravidezService,
               private router: Router) { }
 
@@ -38,10 +38,14 @@ export class QuizzgravidezPage implements OnInit {
         this.respostas.push(r);
       })
     })  
+    this.slide.lockSwipes(true);
   }
 
   nextSlide(){
+    this.slide.lockSwipes(false);
     this.slide.slideNext();    
+    this.slide.lockSwipes(true);
+    this.disableButton = true;
   }
   
   backSlide(){
@@ -321,11 +325,18 @@ export class QuizzgravidezPage implements OnInit {
     this.radios.forEach((radio) => {
       radio.checked = false;
     })
+    this.slide.lockSwipes(false);
     this.slide.slideTo(0);
     this.displayResult = false;
+    this.slide.lockSwipes(true);
   }
 
   idadeGestacional(){
     this.router.navigateByUrl('/slider')
+  }
+
+  slideTap(){
+    this.disableButton = false;
+    console.log('tap')
   }
 }

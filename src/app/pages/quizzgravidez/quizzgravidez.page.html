@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-slides #slide style="height: 100%;" (ionSlideReachEnd)="sliderEnd($event)" pager="true" [options]="slideOpts">
+  <ion-slides #slide style="height: 100%;"  (ionSlideReachEnd)="sliderEnd($event)" pager="true" [options]="slideOpts">
     <ion-slide>
       <div class="content">
         <div class="title-top">Teste de Gravidez</div>
@@ -19,7 +19,7 @@
           <ion-img style="height:128px; width:128px; align-items: center" src="assets/images/baby1.png"></ion-img>          
         </div>
         <div class="text-bottom">
-          <ion-button color="tertiary" (click)="nextSlide()" expand="full">Próxima</ion-button>
+          <ion-button color="tertiary" (click)="nextSlide()" expand="full">COMEÇAR</ion-button>
         </div>
       </div>
     </ion-slide>
@@ -31,17 +31,15 @@
               <ion-label color="primary">{{ questao?.titulo }}</ion-label>
             </ion-list-header>
             <ion-radio-group>
-              <ion-item *ngFor="let resposta of questao.respostas">
-                <ion-label text-wrap class="labels">{{ resposta?.texto }}</ion-label>
-                <!-- <ion-checkbox id="{{ questao.id }}_{{ resposta.id }}" #checkboxes class="checkboxes" slot="start"></ion-checkbox> -->
-                <ion-radio slot="start" id="{{ questao.id }}_{{ resposta.id }}" #radios value=" {{ resposta?.id }}">
-                </ion-radio>
+              <ion-item (click)="slideTap()" *ngFor="let resposta of questao.respostas">
+                <ion-label text-wrap class="labels">{{ resposta?.texto }}</ion-label>                
+                <ion-radio slot="start" id="{{ questao.id }}_{{ resposta.id }}" #radios value=" {{ resposta?.id }}"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
         </div>
         <div class="text-bottom">
-          <ion-button color="tertiary" (click)="nextSlide()" expand="full">Próxima</ion-button>
+          <ion-button [disabled]="disableButton" color="tertiary" (click)="nextSlide()" expand="full">Próxima</ion-button>
         </div>
       </div>
     </ion-slide>
