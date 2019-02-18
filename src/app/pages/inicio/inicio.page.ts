@@ -22,4 +22,7 @@ export class InicioPage implements OnInit {
     this.router.navigateByUrl('/quizzgravidez')
   }
 
+  openListaDocs(){
+    this.router.navigateByUrl('/lista-documentos')
+  }
 }

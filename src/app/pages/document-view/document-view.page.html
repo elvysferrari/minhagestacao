@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+      <ion-buttons slot="start">
+        <ion-back-button text="" defaultHref="lista-documentos"></ion-back-button>
+      </ion-buttons>
+      <ion-title *ngIf="documento" text-left>{{ documento.titulo }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="documento" padding>
+  <div [innerHTML]="documento.conteudo | noSanitize">      
+  </div>
+  
+</ion-content>

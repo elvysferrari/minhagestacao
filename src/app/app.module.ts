@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { IonicStorageModule } from '@ionic/storage';
 import { QuizzgravidezService } from './services/quizzgravidez.service';
 import { GestacaoService } from './services/gestacao.service';
+import { DocumentosService } from './services/documentos.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +28,8 @@ import { GestacaoService } from './services/gestacao.service';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     QuizzgravidezService,
-    GestacaoService
+    GestacaoService,
+    DocumentosService
   ],
   bootstrap: [AppComponent]
 })

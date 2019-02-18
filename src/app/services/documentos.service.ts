@@ -6,18 +6,50 @@ import { Injectable } from '@angular/core';
 })
 export class DocumentosService {
 
-  constructor() { }
+  documentos: DocumentoModelo[] = [];
+  
+  constructor(    
+  ) { 
+    this.documentos = this.generateDocuments();
+  }
 
-  getAllDocumentos(){
+  getDocById(id: number) {
+    return this.documentos.find(x => x.id == id);      
+  }
+  
+  
+
+/*   generateDocuments(){
+    let docList: DocumentoModelo[] = [];
+    docList = [{
+      id: 1,
+      titulo: "teste html",
+      conteudo: "",
+      tipo: "Informação",
+      referencias: []
+    }]
+
+    return docList;
+  } */
+
+  getDocumentList(): any[]{
+    return [{
+      id: 1,
+      titulo: "Nota de Orientação à Gestante",
+      tipo: "Orientacao"
+    }]
+  }
+
+  generateDocuments(){
     let documentos: DocumentoModelo[] = [{
       id: 1,
       tipo: "Orientacao",
       titulo: "Nota de Orientação à Gestante",
-      conteudo: `O sistema de Saúde Suplementar apresenta altos índices de cirurgias cesarianas desnecessárias. Esta nota atende decisão judicial proferida pelo Tribunal Regional Federal da 3ª Região. O objetivo desta nota é esclarecer à estante acerca dos riscos e benefícios da cesariana e do parto normal. 
+      conteudo: `<h1>O sistema de Saúde Suplementar apresenta altos índices de cirurgias cesarianas desnecessárias.</h1> Esta nota atende decisão judicial proferida pelo Tribunal Regional Federal da 3ª Região. O objetivo desta nota é esclarecer à estante acerca dos riscos e benefícios da cesariana e do parto normal. 
       O parto normal é o método natural de nascer durante o qual a mãe produz substâncias capazes de proteger o recém-nascido e favorecer a amamentação, por isso é importante que a mulher entre em trabalho de parto. A sua recuperação é imediata, pois, após o nascimento a mãe poderá levantar-se e cuidar de seu filho. 
       Contudo, algumas mulheres apresentam contraindicação para este tipo de parto devido a condições de saúde preexistentes ou por complicações durante o trabalho de parto havendo indicação para a realização da cirurgia. O parto normal pode também apresentar risco de lesão no períneo.
       A cesariana, quando indicada por razões clínicas, é uma cirurgia segura e com baixa frequência de complicações graves. No entanto, quando realizada sem uma razão médica que a justifique, apresenta riscos de complicações cirúrgicas, como infecções e hemorragia, que podem resultar em morte materna. Quanto ao recém-nascido, 
-      podem ocorrer lesões no momento da retirada do bebê ou outras complicações após o nascimento como infecções e pneumonias, riscos de prematuridade e internação em UTI, nos casos em que a cirurgia é feita antes de 39 semanas de gestação, além de aumentar em 120 vezes a chance do bebe apresentar dificuldade respiratória quando a cirurgia é feita entre 37 e 38 semanas. 
+      podem ocorrer lesões no momento da retirada do bebê ou outras <span style='color: red'>complicações após o nascimento como infecções e pneumonias</span>, riscos de prematuridade e internação em UTI, nos casos em que a cirurgia é feita antes de 39 semanas de gestação, além de aumentar em 120 vezes a chance do bebe apresentar dificuldade respiratória quando a cirurgia é feita entre 37 e 38 semanas. 
       Persistindo dúvidas não hesite em voltar a discutir com seu médico sobre riscos e benefícios que afetam a sua segurança e a do bebê. 
       `,
       referencias:[
