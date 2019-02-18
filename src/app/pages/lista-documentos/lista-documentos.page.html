@@ -2,35 +2,33 @@
   <ion-toolbar color="tertiary">
     <ion-buttons slot="start">
       <ion-back-button text="" defaultHref="home"></ion-back-button>
-    </ion-buttons>    
-   <!--  <ion-title text-left>Informações</ion-title> -->
-    <ion-searchbar (ionCancel)="cancelSearch($event)" (ionChange)="changeSearch($event)" placeholder="Pesquisar"></ion-searchbar>
+    </ion-buttons>
+    <!--  <ion-title text-left>Informações</ion-title> -->
+    <ion-searchbar (ionCancel)="cancelSearch($event)" (ionChange)="changeSearch($event)" placeholder="Pesquisar">
+    </ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <!-- <ion-searchbar placeholder="Pesquisar" showCancelButton cancelButtonText=""></ion-searchbar> -->
 <ion-content padding>
-  
   <ion-list>
     <ion-list-header>
-      <ion-label style="font-size: 0.9rem; font-weight: 600; color: #6b88dc" text-center>Informações</ion-label>
+      <ion-label style="font-size: 0.9rem; font-weight: 600; color: #6b88dc" text-center>Orientações</ion-label>
     </ion-list-header>
+    <div *ngFor="let doc of documentosFiltered">
+      <ion-item *ngIf="doc.tipo == 'Orientacao'" href="document-view/{{ doc.id }}">
+        <ion-label text-wrap style="font-size: 0.8rem; padding-left: 5px;">{{ doc.titulo }}</ion-label>
+      </ion-item>
+    </div>
 
-    <ion-item href="document-view/{{ doc.id }}" *ngFor="let doc of documentosFiltered; let i = index">
-      <ion-label text-wrap style="font-size: 0.8rem; padding-left: 5px;">{{ i + 1 }} - {{ doc.titulo }}</ion-label>
-    </ion-item>
-
-    <ion-item href="document-view/{{ doc.id }}" *ngFor="let doc of documentosFiltered; let i = index">
-      <ion-label text-wrap style="font-size: 0.8rem; padding-left: 5px;">{{ i + 1 }} - {{ doc.titulo }}</ion-label>
-    </ion-item>
-
-    <ion-item href="document-view/{{ doc.id }}" *ngFor="let doc of documentosFiltered; let i = index">
-      <ion-label text-wrap style="font-size: 0.8rem; padding-left: 5px;">{{ i + 1 }} - {{ doc.titulo }}</ion-label>
-    </ion-item>
-
-    <ion-item href="document-view/{{ doc.id }}" *ngFor="let doc of documentosFiltered; let i = index">
-      <ion-label text-wrap style="font-size: 0.8rem; padding-left: 5px;">{{ i + 1 }} - {{ doc.titulo }}</ion-label>
-    </ion-item>
+    <ion-list-header>
+      <ion-label style="font-size: 0.9rem; font-weight: 600; color: #6b88dc" text-center>Informativos</ion-label>
+    </ion-list-header>
+    <div *ngFor="let doc of documentosFiltered">
+      <ion-item *ngIf="doc.tipo == 'Informativos'" href="document-view/{{ doc.id }}">
+        <ion-label text-wrap style="font-size: 0.8rem; padding-left: 5px;">{{ doc.titulo }}</ion-label>
+      </ion-item>
+    </div>
   </ion-list>
 
 
