@@ -1,14 +1,23 @@
 <ion-header>
   <ion-toolbar color="tertiary">
-      <ion-buttons slot="start">
-        <ion-back-button text="" defaultHref="lista-documentos"></ion-back-button>
-      </ion-buttons>
-      <ion-title *ngIf="documento" text-left>{{ documento.titulo }}</ion-title>
-    </ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Voltar" defaultHref="lista-documentos"></ion-back-button>
+    </ion-buttons>
+
+  </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="documento" padding>
-  <div [innerHTML]="documento.conteudo | noSanitize">      
+<ion-content padding>
+  <div *ngIf="documento">
+    <div class="titulo">
+      {{ documento.titulo }}
+    </div>
+    <div class="conteudo" [innerHTML]="documento.conteudo | noSanitize"></div>
+    <div *ngIf="documento.referencias.length > 0" class="referencias">
+      <span  style="font-weight: 600;">Referências</span>
+      <ul>
+        <li *ngFor="let ref of documento.referencias">{{ ref }}</li>
+      </ul>
+    </div>
   </div>
-  
 </ion-content>

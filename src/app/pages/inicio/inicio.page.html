@@ -1,13 +1,14 @@
 <ion-header>
   <ion-toolbar color="tertiary">
+    <ion-icon slot="start" name="home"></ion-icon>
     <ion-title text-center>Início</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-card (click)="openSliderQuizzPage()">
+  <ion-card class="ion-card-header" (click)="openSliderQuizzPage()">
     <ion-img src="assets/images/pregnant.jpg"></ion-img>
-    <ion-card-content>
+    <ion-card-content style="color: #fff; background-color: #3873ad" class="card-content">
       <div class="div-title">
         Estou grávida?
       </div>
@@ -16,9 +17,9 @@
       </div>
     </ion-card-content>
   </ion-card>
-  <ion-card (click)="openSliderPage()">
+  <ion-card class="ion-card-header" (click)="openSliderPage()">
     <ion-img src="assets/images/pregnant-time.jpg"></ion-img>
-    <ion-card-content>
+    <ion-card-content style="color: #fff; background-color: #2a6530" class="card-content">
       <div class="div-title">
         Idade Gestacional
       </div>
@@ -27,9 +28,9 @@
       </div>
     </ion-card-content>
   </ion-card>  
-  <ion-card (click)="openListaDocs()">
+  <ion-card class="ion-card-header" (click)="openListaDocs()">
     <ion-img src="assets/images/acervo.jpg"></ion-img>
-    <ion-card-content>
+    <ion-card-content style="color: #fff; background-color: #754e2e" class="card-content">
       <div class="div-title">
         Informações
       </div>
