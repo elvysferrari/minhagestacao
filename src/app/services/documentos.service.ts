@@ -7,6 +7,15 @@ import { Injectable } from '@angular/core';
 export class DocumentosService {
 
   documentos: DocumentoModelo[] = [];
+  bannerTime = new Date().getMinutes();
+
+  setBannerTime(){
+    this.bannerTime = new Date().getMinutes();
+  }
+  
+  getBannerTime(){
+    return this.bannerTime;
+  }
 
   constructor(
   ) {

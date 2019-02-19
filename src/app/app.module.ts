@@ -13,6 +13,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { QuizzgravidezService } from './services/quizzgravidez.service';
 import { GestacaoService } from './services/gestacao.service';
 import { DocumentosService } from './services/documentos.service';
+import { AdMobFree } from '@ionic-native/admob-free/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +30,8 @@ import { DocumentosService } from './services/documentos.service';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     QuizzgravidezService,
     GestacaoService,
-    DocumentosService
+    DocumentosService,
+    AdMobFree
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,7 @@
 {
-  "name": "Porium",
-  "integrations": {},
+  "name": "Minha Gestação",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
