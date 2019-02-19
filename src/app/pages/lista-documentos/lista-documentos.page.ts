@@ -42,9 +42,9 @@ export class ListaDocumentosPage implements OnInit {
           let time = new Date().getMinutes() - this.docsService.getBannerTime();
           alert(time)
           if(time >= 5){
-            this.docsService.setBannerTime();
-            this.admobFree.banner.hide();
             this.admobFree.interstitial.show();
+            this.docsService.setBannerTime();
+            
           }
          // this.admobFree.interstitial.show();
         })
