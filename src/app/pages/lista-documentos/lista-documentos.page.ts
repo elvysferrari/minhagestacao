@@ -1,14 +1,14 @@
 import { DocumentoModelo } from './../../models/documentoModelo';
 import { Component, OnInit } from '@angular/core';
 import { DocumentosService } from 'src/app/services/documentos.service';
-import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free/ngx';
+import { AdMobFree, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free/ngx';
 
 const intersticalConfig: AdMobFreeInterstitialConfig = {
   // add your config here
   // for the sake of this example we will just use the test config
-  /*  id: 'ca-app-pub-4358080998486510/8666011597', */
-  isTesting: true,
-  autoShow: false
+   id: 'ca-app-pub-4358080998486510/8666011597',
+  isTesting: false,
+  autoShow: true
 };
 
 @Component({
@@ -35,15 +35,17 @@ export class ListaDocumentosPage implements OnInit {
       return a.titulo < b.titulo ? -1 : 1;
     });
 
-    let time = new Date().getMinutes() - this.docsService.getBannerTime();
-    if (time >= 2) {
+    let bannerOpen =  this.docsService.getBannerOpen();
+    
+    if (bannerOpen >= 4) {
       this.admobFree.interstitial.config(intersticalConfig);
       this.admobFree.interstitial.prepare()
         .then(() => {
-          this.admobFree.interstitial.show();
-          this.docsService.setBannerTime();
+          this.docsService.clearBannerOpen();
         })
         .catch(e => alert(e));
+    }else{
+      this.docsService.setBannerOpen();
     }
 
   }

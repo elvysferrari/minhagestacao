@@ -4,7 +4,16 @@ import { QuizzgravidezService } from './../../services/quizzgravidez.service';
 import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { RespostaModelo } from 'src/app/models/respostaModelo';
 import { Router } from '@angular/router';
+import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free/ngx';
+import { DocumentosService } from 'src/app/services/documentos.service';
 
+const intersticalConfig: AdMobFreeInterstitialConfig = {
+  // add your config here
+  // for the sake of this example we will just use the test config
+   id: 'ca-app-pub-4358080998486510/8666011597',
+  isTesting: false,
+  autoShow: true
+};
 @Component({
   selector: 'app-quizzgravidez',
   templateUrl: './quizzgravidez.page.html',
@@ -28,8 +37,12 @@ export class QuizzgravidezPage implements OnInit {
   
   resultado: number;
   disableButton = true;
+
+  slideClick = 1;
   constructor(private questoesService: QuizzgravidezService,
-              private router: Router) { }
+              private router: Router,
+              private docsService: DocumentosService, 
+              private admobFree: AdMobFree) { }
 
   ngOnInit() {
     this.questoes = this.questoesService.getQuizzGravidez();  
@@ -46,6 +59,18 @@ export class QuizzgravidezPage implements OnInit {
     this.slide.slideNext();    
     this.slide.lockSwipes(true);
     this.disableButton = true;
+    
+    let bannerOpen =  this.docsService.getBannerOpen();
+    if (bannerOpen >= 4) {
+      this.admobFree.interstitial.config(intersticalConfig);
+      this.admobFree.interstitial.prepare()
+        .then(() => {
+          this.docsService.clearBannerOpen(-5);
+        })
+        .catch(e => alert(e));
+    }else{
+      this.docsService.setBannerOpen();
+    }
   }
   
   backSlide(){
@@ -54,7 +79,11 @@ export class QuizzgravidezPage implements OnInit {
 
   sliderEnd(evt){
     //fazer pergunta pra colocar o email;
-
+    /* this.admobFree.interstitial.config(intersticalConfig);
+    this.admobFree.interstitial.prepare()
+    .then(() => {
+    })
+    .catch(e => alert(e)); */
   }
 
   sendEmail(){
