@@ -8,7 +8,7 @@ import { DocumentosService } from 'src/app/services/documentos.service';
 const intersticalConfig: AdMobFreeInterstitialConfig = {
   // add your config here
   // for the sake of this example we will just use the test config
-   id: 'ca-app-pub-4358080998486510/8666011597',
+   id: 'ca-app-pub-4358080998486510/4010620718',
   isTesting: false,
   autoShow: true
 };

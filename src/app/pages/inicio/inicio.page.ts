@@ -6,7 +6,7 @@ import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free/ngx';
 const bannerConfig: AdMobFreeBannerConfig = {
   // add your config here
   // for the sake of this example we will just use the test config
-  id: 'ca-app-pub-4358080998486510/3535669536',
+  id: 'ca-app-pub-4358080998486510/5315376790',
   isTesting: false,
   autoShow: true
 };
